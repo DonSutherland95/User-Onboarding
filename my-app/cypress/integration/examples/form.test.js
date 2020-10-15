@@ -6,7 +6,6 @@ describe("Forms App", ()=>{
     const emailInput = () => cy.get('input[name="email"]')
     const passInput = () => cy.get('input[name="password"]')
     const tosInput = () => cy.get('[type="checkbox"]')
-    // const submitBtn = () => cy.get('button[id=submit-btn]')
     const formInput = () => cy.get('#form-id')
     
     it("can type inside of username, email and password fields", ()=>{
@@ -30,10 +29,5 @@ describe("Forms App", ()=>{
 
     })
     
-    //  it("can submit form data", ()=>{
-        
-    //     formInput().submit()
-    // })
-   
 
 })

@@ -17,6 +17,7 @@ const initialFormErrors = {
   username: "",
   email: "",
   password: "",
+  tos:""
   
 };
 function App() {

@@ -17,7 +17,7 @@ export default function Form(props) {
     return (
         <div>
             <h1>from form component</h1>
-            <form  onSubmit={onSubmit} >
+            <form id="form-id" onSubmit={onSubmit} >
                 <label> Name:
                     <input name="username" type="text" onChange={onChange} value={values.username}></input>
                 </label>
@@ -30,7 +30,7 @@ export default function Form(props) {
                 <label> Terms of Service
                     <input name="tos" type="checkbox" onChange={onChange} value={values.tos} ></input>
                 </label>
-               <button disabled={disabled}>submit</button>
+               <button disabled={disabled} id="submit-btn">submit</button>
             </form>
             <div>
                 <div>{errors.username}</div>

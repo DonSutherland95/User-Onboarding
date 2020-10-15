@@ -5,7 +5,7 @@ export default function Users(props) {
     return (
         <div>
             <h1>from users app</h1>
-            <p>{`Username is ${data.username} and E-mail is ${data.email}`}</p>
+            <p>{`Username is ${data.username}, E-mail is ${data.email} `}</p>
         </div>
     )
 }

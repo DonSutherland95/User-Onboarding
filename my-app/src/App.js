@@ -25,38 +25,40 @@ function App() {
   const [disabled, setDisabled] = useState(initialDisabled); 
   const [users, setUsers] = useState([])
 
-    const formSubmit = () =>{
-      let newUser = {
-        username: formValues.username.trim(),
-        email: formValues.email.trim(),
-        password: formValues.password,
-        tos: formValues.tos
-      }
-      
-       setUsers([ ...users, newUser ])
-      // console.log(users)
-      // console.log(newUser)
-      postNewUser(newUser)
-    }
-    const postNewUser = (newUser) => {
-    
-    axios
+  const postNewUser = (newUser) => {
+
+      axios
       .post("https://reqres.in/api/users", newUser)
       .then((res) => {
         // console.log(res)
-        setUsers([res.data, ...users]);
+        // setUsers([res.data, ...users]);
+        setUsers([...users, res.data ]);
         setFormValues(initialFormValues);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+    const formSubmit = () =>{
+        let newUser = {
+        username: formValues.username.trim(),
+        email: formValues.email.trim(),
+        password: formValues.password,
+        tos: formValues.tos
+      }
+      
+      // setUsers([ ...users, newUser ])
+      // console.log(users)
+      // console.log(newUser)
+      // schema.isValid(formValues).then((valid) => {
+      // setDisabled(!valid);
+      // })
+      postNewUser(newUser)
+    }
 
-
-
+    
 
  const inputChange = (name, value) => {
-
     yup
       .reach(schema, name) 
       .validate(value) 
@@ -79,19 +81,22 @@ function App() {
       [name]: value, 
     });
   };
-    useEffect(() => {
+
+  useEffect(() => {
     schema.isValid(formValues).then((valid) => {
       setDisabled(!valid);
     });
   }, [formValues]);
+
+
   return (
     <div className="App">
       <h1>from app</h1>
       <Form values={formValues} change={inputChange} disabled={disabled} errors={formErrors} submit={formSubmit} />
 
       {users.map((item)=>{
-        {console.log(item)}
-        return  <Users data={item}/>
+        {console.log(users)}
+        return  <Users  data={item}/>
       })}
       
     </div>
